@@ -1,14 +1,15 @@
 const Discord = require("discord.js");
-const client = new Discord.Client();
-
-client.on("ready", () => {
-    console.log("Ready")
+const config = require("./config.json");
+const { AkairoClient } = require("discord-akairo");
+const client = new AkairoClient({
+    ownerID: "286601488703291395",
+    prefix: config.prefix,
+    commandDirectory: "./commands/",
+    inhibitorDirectory: "./inhibitors/",
+    listenerDirectory: "./listeners/",
+    allowMention: true
+}, {
+	disableEveryone: true
 });
 
-client.on("message", message => {
-    if (message.content === "ping") {
-        message.reply("pong");
-    }
-});
-
-client.login(process.env.BOT_TOKEN);
+client.login(config.token);//process.env.TOKEN
