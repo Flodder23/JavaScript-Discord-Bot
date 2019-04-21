@@ -1,0 +1,32 @@
+{
+	"command_list": ["avatar", "help", "ping", "rps"],
+	"alias_list": ["avatar", "command", "help", "info", "pic", "ping", "rockpaperscissors", "rps"],
+	"avatar": {
+		"name": "avatar",
+		"aliases": ["avatar", "pic"],
+		"args": [{"id": "member", "type": "member"}],
+		"short_desc": "Shows avatar of selected user.",
+		"long_desc": "If the user cannot be found, or no user is given, it shows the avatar of the user who called the command."
+	},
+	"help": {
+		"name": "help",
+		"aliases": ["help", "info", "command"],
+		"args": [{"id": "command", "type": "string"}],
+		"short_desc": "Shows help message.",
+		"long_desc": "Type .help <command> for more info on a command. If no command is given it gives a general overview of all possible commands."
+	},
+	"ping": {
+		"name": "ping",
+		"aliases": ["ping"],
+		"args": null,
+		"short_desc": "Shows bot's ping.",
+		"long_desc": "Gets time taken between the command being sent and the resulting \"pong\" message to be sent."
+	},
+	"rps": {
+		"name": "rps",
+		"aliases": ["rps", "rockpaperscissors"],
+		"args": [{"id": "choice", "type": "string"}],
+		"short_desc": "Play Rock Paper Scissors.",
+		"long_desc": "Replies with its choice and says who, if anyone, won."
+	}
+}

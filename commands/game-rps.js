@@ -1,10 +1,10 @@
-const { Command } = require("discord-akairo");
+const {Command} = require("discord-akairo");
+const Discord = require("discord.js")
+const info = require("./info.json").rps;
 
 class rpsCommand extends Command {
 	constructor() {
-		super("rps", {
-			aliases: ["RPS", "RockPaperScissors"]
-		});
+		super(info.name, {aliases: info.aliases});
 	}
 
 	exec(message) {
@@ -17,13 +17,13 @@ class rpsCommand extends Command {
 			return message.reply("Please make a legit choice (rock, paper or scissors)")
 		}
 		
-		let bot_choice = player_choice;
-		while (bot_choice === player_choice) {
-			bot_choice = ["rock", "paper", "scissors"][Math.floor(3 * Math.random())];
-		}
+		const bot_choice = ["rock", "paper", "scissors"][Math.floor(3 * Math.random())];
+		let reply = `you chose ${player_choice}.\nI chose ${bot_choice}.\n`;
 
-		let reply = "You chose " + player_choice + ".\nI chose " + bot_choice + ".\n";
-		if (player_choice === "rock") {
+		if (bot_choice === player_choice) {
+			reply += "It's a draw!";
+		}
+		else if (player_choice === "rock") {
 			if (bot_choice === "paper"){
 				reply += "I";
 			}
@@ -47,8 +47,10 @@ class rpsCommand extends Command {
 				reply += "You";
 			}
 		}
-
-		return message.reply(reply + " win!");
+		if (!(bot_choice === player_choice)) {
+			reply += " win!";
+		}
+		return message.reply(reply);
 	}
 }
 
