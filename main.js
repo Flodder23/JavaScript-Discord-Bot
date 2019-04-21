@@ -22,7 +22,6 @@ const client = new AkairoClient({
     ownerID: "286601488703291395",
     prefix: config["prefix"],
     commandDirectory: "./commands/",
-    inhibitorDirectory: "./inhibitors/",
     listenerDirectory: "./listeners/",
     allowMention: true
 }, {
