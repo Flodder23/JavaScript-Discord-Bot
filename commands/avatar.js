@@ -1,6 +1,5 @@
 const {Command} = require("discord-akairo");
 const Discord = require("discord.js");
-const info = require("./info.json").avatar;
 
 class AvatarCommand extends Command {
 	constructor() {
