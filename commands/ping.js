@@ -4,7 +4,9 @@ const info = require("./info.json").ping;
 
 class PingCommand extends Command {
 	constructor() {
-		super(info.name, {aliases: info.aliases});
+		super("ping", {
+			aliases: ["ping"],
+			description: "Shows bot's ping.\nGets time taken between the command being sent and the resulting \"pong\" message to be sent."});
 	}
 
 	exec(message) {

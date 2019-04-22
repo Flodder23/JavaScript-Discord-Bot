@@ -1,18 +1,16 @@
 const {Command} = require("discord-akairo");
 const Discord = require("discord.js")
-const info = require("./info.json").rps;
 
 class rpsCommand extends Command {
 	constructor() {
-		super(info.name, {aliases: info.aliases});
+		super("rps", {
+			aliases: ["rps", "rockpaperscissors"],
+			args: [{id: "choice", type: "string"}],
+			description: "Play Rock Paper Scissors.\nReplies with its choice and says who, if anyone, won."});
 	}
 
-	exec(message) {
-		let player_choice = message.content.split(" ")[1]
-		if (typeof player_choice === "undefined") {
-			return message.reply("Please make your choice (rock, paper or scissors)")
-		}
-		player_choice = player_choice.toLowerCase();
+	exec(message, args) {
+		let player_choice = args.choice.toLowerCase();
 		if (!["rock", "paper", "scissors"].includes(player_choice)) {
 			return message.reply("Please make a legit choice (rock, paper or scissors)")
 		}
