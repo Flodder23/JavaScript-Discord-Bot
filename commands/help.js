@@ -33,7 +33,6 @@ class HelpCommand extends Command {
 			for (let item of this.handler.modules) {
 				cmds.push([item[0], item[1].description.split("\n")[0]])
 			}
-			console.log(cmds);
 			message.channel.send(new Discord.RichEmbed()
 				.setColor(16426522)
 				.setTitle("**Joe's Bot Help**")
