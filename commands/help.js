@@ -12,7 +12,7 @@ class HelpCommand extends Command {
 		if (args.command) {
 			let command_found = false;
 			for (let item of this.handler.modules) {
-				if (item[0] === args.command && !command_found) {
+				if (item[1].aliases.includes(args.command) && !command_found) {
 					command_found = true
 					let cmd = item[1];
 					message.channel.send(new Discord.RichEmbed()

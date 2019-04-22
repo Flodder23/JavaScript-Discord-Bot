@@ -1,4 +1,4 @@
 /node_modules/*
 package-lock.json
 config.json
-/commands/um-debug.js
+/commands/debug.js
