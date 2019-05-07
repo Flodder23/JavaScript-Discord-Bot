@@ -1,31 +1,29 @@
+const { AkairoClient } = require("discord-akairo");
 const Discord = require("discord.js");
+const config = require("./commands/config.js");
 
-function getConfig() {
-	try {
-		const config = require("./config.json");
-		const token = config.token;
-		const prefix = config.prefix;
-		console.log("Starting using locally stored value for token.");
-		return {"token": token, "prefix": prefix}
-	}
-	catch(error) {
-		const token = process.env.TOKEN;
-		const prefix = ".";
-		console.log("Starting using token stored on Heroku");
-		return {"token": token, "prefix": prefix}
-	}
+var token, prefix;
+try {
+	token = require("./token.json").key;
+	console.log("Starting using locally stored value for token.");
+	prefix = config.test_prefix;
+}
+catch(error) {
+	token = process.env.TOKEN;
+	console.log("Starting using token stored on Heroku");
+	prefix = config.main_prefix;
 }
 
-const config = getConfig()
-const { AkairoClient } = require("discord-akairo");
-const client = new AkairoClient({
-    ownerID: "286601488703291395",
-    prefix: config["prefix"],
-    commandDirectory: "./commands/",
-    listenerDirectory: "./listeners/",
-    allowMention: true
-}, {
-	disableEveryone: true
-});
+const client = new AkairoClient(
+	{
+	    ownerID: config.owner_id,
+	    prefix: prefix,
+	    commandDirectory: "./commands/",
+	    listenerDirectory: "./listeners/",
+	    allowMention: true
+	}, {
+		disableEveryone: true
+	}
+);
 
-client.login(config["token"]);
+client.login(token);
