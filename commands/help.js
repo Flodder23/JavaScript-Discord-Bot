@@ -30,7 +30,7 @@ class HelpCommand extends Command {
 				.setTitle("**Joe's Bot Help**")
 				.setURL("https://github.com/joegibby/JavaScript-Discord-Bot/blob/master")
 				.addField("Info", `Bot made in Discord.js using discord-akairo by @Joe#5991.\nFor Source code just click the title.\nType \`${this.handler.prefix()}help <command>\` for more information on a command.`)
-				.addField("Commands", `• ${cmds.map(item => item[0]).join("\n- ")}`, true)
+				.addField("Commands", `• ${cmds.map(item => item[0]).join("\n• ")}`, true)
 				.addField("Description", cmds.map(item => item[1]).join("\n"), true)
 			);
 		} else {
